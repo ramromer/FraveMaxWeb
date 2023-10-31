@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Producto Details</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Producto Details</h1>
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <td th:text="${producto.idProducto}"></td>
+        </tr>
+        <tr>
+            <th>Nombre</th>
+            <td th:text="${producto.nombre}"></td>
+        </tr>
+        <tr>
+            <th>Descripción</th>
+            <td th:text="${producto.descripcion}"></td>
+        </tr>
+        <tr>
+            <th>Categoria</th>
+            <td th:text="${producto.categoria}"></td>
+        </tr>
+        <tr>
+            <th>Precio</th>
+            <td th:text="${producto.precio}"></td>
+        </tr>
+        <tr>
+            <th>En Oferta</th>
+            <td th:text="${producto.enOferta}"></td>
+        </tr>
+        <tr>
+            <th>Estado</th>
+            <td th:text="${producto.estado ? 'Activo' : 'Inactivo'}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
