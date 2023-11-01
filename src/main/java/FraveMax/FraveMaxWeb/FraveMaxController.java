@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
@@ -19,12 +20,18 @@ public class FraveMaxController {
     private TemplateEngine templateEngine;
     
 
-    @GetMapping("/producto")
-    public String Producto(Model model) {
-        // Create a sample Producto object for demonstration
-//        Producto producto = new Producto(1, 10, "Sample Product", "Product Description bla bla bla bla ballbalbal bla bal bla ee aaa bla bla euuu yyy bla bla balbalblalbablaruhg", Categoria.LINEABLANCA, 95.99, 5, true);
+//    @GetMapping("/producto")
+//    public String Producto(Model model) {
+//        ProductoData pd = new ProductoData();
+//        Producto producto = pd.listarProducto(2);
+//        model.addAttribute("producto", producto);
+//        return "producto";
+//    }
+
+    @GetMapping("/producto/{productId}")
+    public String Producto(@PathVariable int productId, Model model) {
         ProductoData pd = new ProductoData();
-        Producto producto = pd.listarProducto(2);
+        Producto producto = pd.listarProducto(productId);
         model.addAttribute("producto", producto);
         return "producto";
     }
