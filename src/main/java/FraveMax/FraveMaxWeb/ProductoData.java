@@ -18,7 +18,7 @@ public class ProductoData {
     }
 
     public void agregarProducto(Producto producto) {
-        String sql = "INSERT INTO producto (stock,nombre,descripcion,categoria,precio,estado,enOferta) VALUES (?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO producto (stock,nombre,descripcion,categoria,precio,estado,enOferta,imagen) VALUES (?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, producto.getStock());
@@ -28,6 +28,7 @@ public class ProductoData {
             ps.setDouble(5, producto.getPrecio());
             ps.setBoolean(6, producto.isEstado());
             ps.setInt(7, producto.getEnOferta());
+            ps.setString(8, producto.getImagen());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
 
@@ -44,7 +45,7 @@ public class ProductoData {
     }
 
     public void modificarProducto(Producto producto) {
-        String sql = "UPDATE producto SET stock=?,nombre=?,descripcion=?,categoria=?,precio=?,estado=?,enOferta=? WHERE idProducto=?";
+        String sql = "UPDATE producto SET stock=?,nombre=?,descripcion=?,categoria=?,precio=?,estado=?,enOferta=?,imagen=? WHERE idProducto=?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -56,13 +57,14 @@ public class ProductoData {
             ps.setBoolean(6, producto.isEstado());
             ps.setInt(7, producto.getEnOferta());
             ps.setInt(8, producto.getIdProducto());
+            ps.setString(9, producto.getImagen());
             int exito = ps.executeUpdate();
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Producto modificado");
-
+//                JOptionPane.showMessageDialog(null, "Producto modificado");
+                System.out.println("Producto Modificado");
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error, No se pudo modificar " + ex.getMessage());
+//            JOptionPane.showMessageDialog(null, "Error, No se pudo modificar " + ex.getMessage());
             System.out.println(ex.getMessage());
         }
 
@@ -74,12 +76,12 @@ public class ProductoData {
             PreparedStatement ps = con.prepareStatement(sql);
             int exito = ps.executeUpdate();
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Producto eliminado");
-
+//                JOptionPane.showMessageDialog(null, "Producto eliminado");
+                System.out.println("Producto Eliminado");
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "No se pudo eliminar el producto " + ex.getMessage());
-
+//            JOptionPane.showMessageDialog(null, "No se pudo eliminar el producto " + ex.getMessage());
+            System.out.println("Algo salio mal: "+ex.getSQLState()+"/n/n/n ..O sino: " + ex.getMessage());
         }
     }
 
@@ -101,12 +103,13 @@ public class ProductoData {
                 producto.setPrecio(rs.getInt("precio"));
                 producto.setEstado(rs.getBoolean("estado"));
                 producto.setEnOferta(rs.getInt("enOferta"));
+                producto.setImagen(rs.getString("imagen"));
                 productos.add(producto);
             }
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "ERROR " + ex.getMessage());
-
+//            JOptionPane.showMessageDialog(null, "ERROR " + ex.getMessage());
+            System.out.println("Algo salio mal: "+ ex.getMessage());
         }
         return productos;
     }
@@ -127,12 +130,13 @@ public class ProductoData {
                 producto.setPrecio(rs.getInt("precio"));
                 producto.setEstado(rs.getBoolean("estado"));
                 producto.setEnOferta(rs.getInt("enOferta"));
+                producto.setImagen(rs.getString("imagen"));
 
             }
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage());
-
+//            JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage());
+            System.out.println("Algo salio mal:" + ex.getMessage());
         }
         return producto;
     }
@@ -160,13 +164,14 @@ public class ProductoData {
                 producto.setPrecio(rs.getInt("precio"));
                 producto.setEstado(rs.getBoolean("estado"));
                 producto.setEnOferta(rs.getInt("enOferta"));
+                producto.setImagen(rs.getString("imagen"));
                 productos.add(producto);
 
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error. No se encontro " + ex.getMessage());
-
+//            JOptionPane.showMessageDialog(null, "Error. No se encontro " + ex.getMessage());
+            System.out.println("error: "+ex.getMessage());
         }
         return productos;
     }
@@ -194,13 +199,14 @@ public class ProductoData {
                 producto.setPrecio(rs.getInt("precio"));
                 producto.setEstado(rs.getBoolean("estado"));
                 producto.setEnOferta(rs.getInt("enOferta"));
+                producto.setImagen(rs.getString("imagen"));
                 productos.add(producto);
 
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error. No se encontro " + ex.getMessage());
-
+//            JOptionPane.showMessageDialog(null, "Error. No se encontro " + ex.getMessage());
+            System.out.println("error: "+ex.getMessage());
         }
         return productos;
     }

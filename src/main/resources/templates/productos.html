@@ -16,6 +16,10 @@
             padding: 10px;
             text-align: center;
         }
+
+        .product-image {
+            max-width: 100%; /* Ensure the image doesn't exceed its container width */
+        }
     </style>
 </head>
 <body>
@@ -23,6 +27,7 @@
     <h1>Conoce nuestros productos</h1>
     <div class="product-grid">
         <div th:each="producto : ${productos}" class="product-item">
+            <img th:src="${producto.imagen}" class="product-image" alt="Product Image">
             <h2 th:text="${producto.nombre}"></h2>
             <p th:text="${producto.descripcion}"></p>
             <p th:text="${producto.categoria}"></p>

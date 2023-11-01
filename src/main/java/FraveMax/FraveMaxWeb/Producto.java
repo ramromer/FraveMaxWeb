@@ -10,11 +10,12 @@ public class Producto {
     private double precio;
     private int enOferta;
     private boolean estado;
+    private String imagen;
 
     public Producto() {
     }
 
-    public Producto(int stock, String nombre, String descripcion, Categoria categoria, double precio, int enOferta, boolean estado) {
+    public Producto(int stock, String nombre, String descripcion, Categoria categoria, double precio, int enOferta, boolean estado, String imagen) {
         this.stock = stock;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -22,9 +23,10 @@ public class Producto {
         this.precio = precio;
         this.enOferta = enOferta;
         this.estado = estado;
+        this.imagen = imagen;
     }
 
-    public Producto(int idProducto, int stock, String nombre, String descripcion, Categoria categoria, double precio, int enOferta, boolean estado) {
+    public Producto(int idProducto, int stock, String nombre, String descripcion, Categoria categoria, double precio, int enOferta, boolean estado, String imagen) {
         this.idProducto = idProducto;
         this.stock = stock;
         this.nombre = nombre;
@@ -33,6 +35,15 @@ public class Producto {
         this.precio = precio;
         this.enOferta = enOferta;
         this.estado = estado;
+        this.imagen = imagen;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
     public int getIdProducto() {

@@ -9,11 +9,11 @@ import java.sql.SQLException;
  * @author emanuel y sus amigos
  */
 public class Conexion {
-    private static final String PORT= "3306";//System.getProperty("PORT");
+    private static final String PORT= "3307";//System.getProperty("PORT");
     private static String URL = "jdbc:mariadb://localhost:";
-    private static final String DB="/Prueba";
+    private static final String DB="/FraveMaxWeb";
     private static final String USUARIO="root";//System.getProperty("USER");
-    private static final String PASSWORD="r00tr00t";//System.getProperty("PASS");;
+    private static final String PASSWORD="";//System.getProperty("PASS");;
     private static Connection connection;
 
     private Conexion(){}
