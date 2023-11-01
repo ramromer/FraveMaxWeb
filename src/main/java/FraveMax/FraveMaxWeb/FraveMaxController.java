@@ -20,13 +20,13 @@ public class FraveMaxController {
     private TemplateEngine templateEngine;
     
 
-//    @GetMapping("/producto")
-//    public String Producto(Model model) {
-//        ProductoData pd = new ProductoData();
-//        Producto producto = pd.listarProducto(2);
-//        model.addAttribute("producto", producto);
-//        return "producto";
-//    }
+    @GetMapping("/productos")
+    public String Producto(Model model) {
+        ProductoData pd = new ProductoData();
+        ArrayList<Producto> productList = pd.listarProductos();
+        model.addAttribute("productos", productList);
+        return "productos";
+    }
 
     @GetMapping("/producto/{productId}")
     public String Producto(@PathVariable int productId, Model model) {

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Producto List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        /* Define the CSS Grid layout */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* You can adjust the number of columns as needed */
+            gap: 20px; /* Adjust the gap between items */
+        }
+
+        .product-item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Conoce nuestros productos</h1>
+    <div class="product-grid">
+        <div th:each="producto : ${productos}" class="product-item">
+            <h2 th:text="${producto.nombre}"></h2>
+            <p th:text="${producto.descripcion}"></p>
+            <p th:text="${producto.categoria}"></p>
+            <p th:text="${producto.precio}"></p>
+            <!-- Add more content here as needed -->
+        </div>
+    </div>
+</div>
+</body>
+</html>
